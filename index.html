@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#130a2e">
+<meta name="description" content="A special birthday surprise for Ganesh">
+<title>Happy Birthday Ganesh 🎂</title>
+
+<!-- Elegant fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Great+Vibes&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --gold:#ffd76a;
+  --gold2:#fff1a8;
+  --pink:#ff5c9a;
+  --purple:#6f3cff;
+  --deep:#09051b;
+  --glass:rgba(255,255,255,.09);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;min-height:100%;font-family:Poppins,sans-serif;background:var(--deep);color:#fff;overflow-x:hidden}
+body{min-height:100svh}
+button{font:inherit}
+
+#app{
+  min-height:100svh;
+  position:relative;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 50% 20%,rgba(111,60,255,.34),transparent 34%),
+    radial-gradient(circle at 10% 90%,rgba(255,92,154,.20),transparent 30%),
+    linear-gradient(145deg,#070313,#180b37 55%,#05020f);
+}
+
+.stars,.stars:before,.stars:after{
+  position:absolute;inset:0;content:"";pointer-events:none;
+  background-image:
+    radial-gradient(circle,rgba(255,255,255,.85) 0 1px,transparent 1.5px),
+    radial-gradient(circle,rgba(255,215,106,.65) 0 1px,transparent 1.5px);
+  background-size:90px 90px,140px 140px;
+  background-position:10px 20px,40px 80px;
+  animation:drift 18s linear infinite;
+  opacity:.55;
+}
+.stars:before{background-size:170px 170px;animation-duration:28s;opacity:.3}
+.stars:after{background-size:230px 230px;animation-duration:38s;opacity:.22}
+@keyframes drift{to{transform:translate3d(-90px,70px,0)}}
+
+.screen{
+  min-height:100svh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:24px 18px;
+  position:relative;
+  z-index:2;
+  transition:opacity .8s,transform .8s;
+}
+.hidden{display:none!important}
+
+.card{
+  width:min(94vw,520px);
+  text-align:center;
+  position:relative;
+}
+
+.kicker{
+  letter-spacing:4px;
+  text-transform:uppercase;
+  font-size:11px;
+  color:rgba(255,255,255,.72);
+  margin-bottom:12px;
+}
+
+.title{
+  font-family:"Cinzel",serif;
+  font-size:clamp(34px,10vw,64px);
+  line-height:1.04;
+  margin:8px 0;
+  background:linear-gradient(90deg,#fff8c8,var(--gold),#fff);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+  text-shadow:0 0 35px rgba(255,215,106,.25);
+}
+.script{
+  font-family:"Great Vibes",cursive;
+  font-size:clamp(45px,14vw,80px);
+  line-height:1;
+  color:#fff;
+  text-shadow:0 8px 35px rgba(255,92,154,.35);
+}
+.sub{
+  color:rgba(255,255,255,.78);
+  font-size:14px;
+  line-height:1.7;
+  margin:14px auto;
+  max-width:420px;
+}
+
+.gift-wrap{
+  width:210px;height:210px;margin:25px auto 30px;
+  position:relative;
+  filter:drop-shadow(0 25px 35px rgba(0,0,0,.45));
+  cursor:pointer;
+  animation:float 3s ease-in-out infinite;
+}
+@keyframes float{50%{transform:translateY(-10px)}}
+.gift{
+  position:absolute;left:25px;right:25px;bottom:18px;height:125px;
+  background:linear-gradient(135deg,#ff4f8a,#a90d61);
+  border-radius:10px 10px 18px 18px;
+  box-shadow:inset 0 0 0 3px rgba(255,255,255,.13);
+}
+.gift:before{
+  content:"";position:absolute;left:50%;top:0;bottom:0;width:25px;
+  transform:translateX(-50%);background:linear-gradient(90deg,#ffd84d,#fff0a3,#dca91b);
+}
+.lid{
+  position:absolute;left:15px;right:15px;top:35px;height:40px;
+  border-radius:9px;background:linear-gradient(135deg,#ff6a9d,#c21870);
+  z-index:3;transition:.9s cubic-bezier(.2,.9,.2,1);
+}
+.lid:before{content:"";position:absolute;left:50%;top:0;bottom:0;width:25px;transform:translateX(-50%);background:#ffd84d}
+.bow{position:absolute;top:0;left:50%;transform:translateX(-50%);z-index:4}
+.bow:before,.bow:after{content:"";display:block;position:absolute;width:58px;height:38px;border:11px solid #ffd84d;border-radius:50% 50% 45% 45%;top:-20px}
+.bow:before{right:0;transform:rotate(28deg)}
+.bow:after{left:0;transform:rotate(-28deg)}
+.knot{width:22px;height:22px;border-radius:50%;background:#fff0a3;position:absolute;left:-11px;top:-10px}
+.gift.open .lid{transform:translateY(-75px) rotate(-5deg);opacity:.98}
+.gift.open .bow{transform:translate(-50%,-65px) scale(.9);transition:.9s}
+
+.tap{
+  display:inline-flex;align-items:center;gap:8px;
+  border:1px solid rgba(255,255,255,.18);
+  background:linear-gradient(135deg,rgba(255,215,106,.18),rgba(255,92,154,.15));
+  color:#fff;padding:13px 22px;border-radius:999px;
+  box-shadow:0 10px 30px rgba(0,0,0,.25),inset 0 0 18px rgba(255,255,255,.04);
+  cursor:pointer;
+}
+.tap:active{transform:scale(.97)}
+
+.reveal{
+  opacity:0;transform:translateY(25px) scale(.98);
+  transition:1s cubic-bezier(.2,.8,.2,1);
+}
+.reveal.show{opacity:1;transform:none}
+
+.burst{
+  position:fixed;inset:0;pointer-events:none;z-index:20;overflow:hidden;
+}
+.confetti{
+  position:absolute;width:7px;height:15px;border-radius:2px;top:-30px;
+  animation:fall 3.5s linear forwards;
+}
+@keyframes fall{to{transform:translate3d(var(--x),110vh,0) rotate(720deg);opacity:0}}
+
+.hearts{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.heart{
+  position:absolute;bottom:-40px;font-size:20px;
+  animation:rise var(--d) linear forwards;opacity:0;
+}
+@keyframes rise{15%{opacity:1}100%{transform:translateY(-110vh) rotate(30deg);opacity:0}}
+
+.section{
+  width:min(94vw,720px);
+  margin:0 auto;
+  padding:60px 0;
+}
+.section h2{
+  font-family:Cinzel,serif;text-align:center;font-size:25px;margin:0 0 8px;
+}
+.section p.lead{text-align:center;color:rgba(255,255,255,.7);font-size:13px;margin:0 0 30px}
+
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:16px;
+  align-items:end;
+}
+.photo{
+  background:linear-gradient(145deg,rgba(255,255,255,.13),rgba(255,255,255,.04));
+  border:1px solid rgba(255,215,106,.25);
+  border-radius:22px;padding:9px;
+  box-shadow:0 18px 45px rgba(0,0,0,.3);
+  backdrop-filter:blur(12px);
+  opacity:0;transform:translateY(40px) scale(.85);
+  transition:1s cubic-bezier(.2,.9,.2,1);
+}
+.photo.visible{opacity:1;transform:none}
+.photo:nth-child(1){grid-column:1/3;max-width:78%;justify-self:center}
+.photo:nth-child(2){transform:translateY(40px) scale(.78) rotate(-2deg)}
+.photo:nth-child(3){transform:translateY(40px) scale(.84) rotate(2deg)}
+.photo:nth-child(4){transform:translateY(40px) scale(.9) rotate(-1deg)}
+.photo:nth-child(5){transform:translateY(40px) scale(.96) rotate(1deg)}
+.photo:nth-child(6){grid-column:1/3;max-width:88%;justify-self:center}
+.photo.visible:nth-child(2){transform:rotate(-2deg)}
+.photo.visible:nth-child(3){transform:rotate(2deg)}
+.photo.visible:nth-child(4){transform:rotate(-1deg)}
+.photo.visible:nth-child(5){transform:rotate(1deg)}
+.photo img{
+  display:block;width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:15px;
+  background:linear-gradient(135deg,#281353,#10081f);
+}
+.photo .cap{font-size:11px;color:rgba(255,255,255,.72);padding:8px 4px 2px;text-align:center}
+
+.calendar{
+  width:min(94vw,430px);margin:30px auto 0;
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.15);
+  border-radius:25px;padding:18px;
+  box-shadow:0 25px 60px rgba(0,0,0,.3);
+  backdrop-filter:blur(14px);
+}
+.cal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.cal-head strong{font-family:Cinzel,serif;font-size:18px}
+.cal-head span{font-size:11px;color:var(--gold)}
+.week,.days{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;text-align:center}
+.week div{font-size:10px;color:rgba(255,255,255,.48);padding:5px 0}
+.day{font-size:12px;padding:10px 0;border-radius:14px;position:relative;color:rgba(255,255,255,.8)}
+.day.muted{opacity:.2}
+.day.bday{
+  color:#130a2e;font-weight:800;background:linear-gradient(135deg,#fff0a3,#ffcf48);
+  box-shadow:0 0 25px rgba(255,215,106,.45);
+}
+.day.bday:after{content:"♥";position:absolute;color:#ff2d73;font-size:17px;top:-10px;right:1px;animation:pulse 1s infinite}
+@keyframes pulse{50%{transform:scale(1.25)}}
+
+.message{
+  width:min(94vw,620px);margin:20px auto 70px;
+  text-align:center;padding:34px 22px;border-radius:28px;
+  background:linear-gradient(145deg,rgba(255,215,106,.11),rgba(255,92,154,.08));
+  border:1px solid rgba(255,215,106,.22);
+}
+.message .big{font-family:"Great Vibes";font-size:42px;color:#fff}
+.message p{font-size:14px;line-height:1.9;color:rgba(255,255,255,.78)}
+.signature{font-family:"Great Vibes";font-size:28px;color:var(--gold)}
+
+.footer{text-align:center;color:rgba(255,255,255,.42);font-size:10px;padding:20px}
+
+.scroll-hint{margin-top:18px;font-size:11px;color:rgba(255,255,255,.5);animation:bob 1.7s infinite}
+@keyframes bob{50%{transform:translateY(5px)}}
+
+@media (min-width:700px){
+  .gallery{grid-template-columns:repeat(3,1fr)}
+  .photo:nth-child(1),.photo:nth-child(6),.photo:nth-child(9){grid-column:auto;max-width:none}
+}
+</style>
+</head>
+
+<body>
+<div id="app">
+  <div class="stars"></div>
+  <div class="hearts" id="hearts"></div>
+
+  <!-- Opening scene -->
+  <section class="screen" id="intro">
+    <div class="card">
+      <div class="kicker">✨ A little surprise is waiting ✨</div>
+      <div class="script">For Ganesh</div>
+      <p class="sub">Someone special has a birthday tomorrow…<br>Tap the gift to open your surprise 🎁</p>
+
+      <div class="gift-wrap" id="giftWrap" aria-label="Open birthday gift">
+        <div class="gift" id="gift">
+          <div class="lid"><div class="bow"><div class="knot"></div></div></div>
+        </div>
+      </div>
+
+      <button class="tap" id="openBtn">🎁 Open Your Surprise</button>
+      <div class="scroll-hint">Tap the button — something magical is coming ↓</div>
+    </div>
+  </section>
+
+  <!-- Main surprise -->
+  <main id="surprise" class="hidden">
+    <section class="screen" style="min-height:92svh">
+      <div class="card">
+        <div class="kicker reveal">🎉 TODAY'S THE DAY 🎉</div>
+        <div class="title reveal">HAPPY BIRTHDAY</div>
+        <div class="script reveal">Ganesh ❤️</div>
+        <p class="sub reveal">May your new year of life be filled with laughter, adventures, wonderful memories and every dream you wish for. 🥳✨</p>
+        <div class="reveal" style="font-size:54px;margin:18px 0">🎂🎈🎁</div>
+        <button class="tap reveal" id="startGallery">📸 Open Your Memories</button>
+      </div>
+    </section>
+
+    <section class="section" id="gallerySection">
+      <h2>Little Moments, Big Memories 📸</h2>
+      <p class="lead">Your photos will appear one after another — growing from small memories into a big celebration.</p>
+
+      <div class="gallery">
+        <div class="photo"><img src="photos/photo1.jpg" alt="Ganesh memory 1"><div class="cap">A beautiful beginning ✨</div></div>
+        <div class="photo"><img src="photos/photo2.jpg" alt="Ganesh memory 2"><div class="cap">That birthday smile ❤️</div></div>
+        <div class="photo"><img src="photos/photo3.png" alt="Ganesh memory 3"><div class="cap">Little memories, big happiness 😊</div></div>
+        <div class="photo"><img src="photos/photo4.jpg" alt="Ganesh memory 4"><div class="cap">Brothers forever 🤝❤️</div></div>
+        <div class="photo"><img src="photos/photo5.jpg" alt="Ganesh memory 5"><div class="cap">Growing up beautifully 🌟</div></div>
+        <div class="photo"><img src="photos/photo6.jpg" alt="Ganesh memory 6"><div class="cap">A moment to remember 📸</div></div>
+        <div class="photo"><img src="photos/photo7.jpg" alt="Ganesh memory 7"><div class="cap">Adventure mode ON 🥳</div></div>
+        <div class="photo"><img src="photos/photo8.jpg" alt="Ganesh memory 8"><div class="cap">Keep shining, Ganesh ✨</div></div>
+        <div class="photo"><img src="photos/photo9.jpg" alt="Ganesh memory 9"><div class="cap">Many more memories ahead! 🎂❤️</div></div>
+      </div>
+
+      <div style="text-align:center;margin-top:28px">
+        <button class="tap" id="calendarBtn">📅 See Your Birthday Date</button>
+      </div>
+    </section>
+
+    <section class="section hidden" id="calendarSection">
+      <h2>One Special Date ❤️</h2>
+      <p class="lead">A date worth celebrating every single year.</p>
+
+      <div class="calendar">
+        <div class="cal-head">
+          <strong>August 2026</strong>
+          <span>🎂 GANESH'S DAY</span>
+        </div>
+        <div class="week">
+          <div>Sun</div><div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div>
+        </div>
+        <div class="days">
+          <div class="day muted">26</div><div class="day muted">27</div><div class="day muted">28</div><div class="day muted">29</div><div class="day muted">30</div><div class="day muted">31</div><div class="day">1</div>
+          <div class="day">2</div><div class="day">3</div><div class="day">4</div><div class="day">5</div><div class="day">6</div><div class="day">7</div><div class="day">8</div>
+          <div class="day">9</div><div class="day bday">10</div><div class="day">11</div><div class="day">12</div><div class="day">13</div><div class="day">14</div><div class="day">15</div>
+          <div class="day">16</div><div class="day">17</div><div class="day">18</div><div class="day">19</div><div class="day">20</div><div class="day">21</div><div class="day">22</div>
+          <div class="day">23</div><div class="day">24</div><div class="day">25</div><div class="day">26</div><div class="day">27</div><div class="day">28</div><div class="day">29</div>
+          <div class="day">30</div><div class="day">31</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="message">
+      <div class="big">Dear Ganesh ❤️</div>
+      <p>
+        This little page is made especially for you.<br>
+        Keep smiling, keep dreaming and keep being the amazing person you are.
+        May this birthday open the door to an unforgettable year full of happiness,
+        success, love and beautiful surprises. 🌟
+      </p>
+      <div class="signature">Happy Birthday, Ganesh! 🎂</div>
+      <div style="font-size:28px;margin-top:15px">🎉 🥳 ❤️ 🎈 ✨ 🎁</div>
+    </section>
+
+    <div class="footer">Made with ❤️ specially for Ganesh • 10 August 2026</div>
+  </main>
+
+  <div class="burst" id="burst"></div>
+</div>
+
+<script>
+const openBtn = document.getElementById('openBtn');
+const giftWrap = document.getElementById('giftWrap');
+const gift = document.getElementById('gift');
+const intro = document.getElementById('intro');
+const surprise = document.getElementById('surprise');
+const burst = document.getElementById('burst');
+const hearts = document.getElementById('hearts');
+
+function confetti(){
+  const symbols = ['●','■','◆','✦'];
+  for(let i=0;i<85;i++){
+    const el=document.createElement('span');
+    el.className='confetti';
+    el.textContent=symbols[Math.floor(Math.random()*symbols.length)];
+    el.style.left=(Math.random()*100)+'vw';
+    el.style.setProperty('--x',(Math.random()*240-120)+'px');
+    el.style.animationDelay=(Math.random()*1.4)+'s';
+    el.style.animationDuration=(2.7+Math.random()*2.2)+'s';
+    el.style.fontSize=(8+Math.random()*10)+'px';
+    burst.appendChild(el);
+    setTimeout(()=>el.remove(),6000);
+  }
+}
+function floatingHearts(){
+  for(let i=0;i<18;i++){
+    const h=document.createElement('span');
+    h.className='heart';
+    h.textContent=['❤️','💖','✨','💗'][Math.floor(Math.random()*4)];
+    h.style.left=Math.random()*100+'vw';
+    h.style.setProperty('--d',(5+Math.random()*6)+'s');
+    h.style.animationDelay=(Math.random()*4)+'s';
+    hearts.appendChild(h);
+    setTimeout(()=>h.remove(),11000);
+  }
+}
+function revealTop(){
+  document.querySelectorAll('#surprise .reveal').forEach((el,i)=>{
+    setTimeout(()=>el.classList.add('show'),250+i*180);
+  });
+}
+
+function openSurprise(){
+  gift.classList.add('open');
+  openBtn.disabled=true;
+  confetti();
+  setTimeout(()=>{
+    intro.style.opacity='0';
+    intro.style.transform='scale(.96)';
+  },450);
+  setTimeout(()=>{
+    intro.classList.add('hidden');
+    surprise.classList.remove('hidden');
+    window.scrollTo(0,0);
+    revealTop();
+    floatingHearts();
+  },1150);
+}
+openBtn.addEventListener('click',openSurprise);
+giftWrap.addEventListener('click',openSurprise);
+
+document.getElementById('startGallery').addEventListener('click',()=>{
+  document.getElementById('gallerySection').scrollIntoView({behavior:'smooth'});
+  setTimeout(()=>{
+    document.querySelectorAll('.photo').forEach((p,i)=>setTimeout(()=>p.classList.add('visible'),i*420));
+  },500);
+});
+
+document.getElementById('calendarBtn').addEventListener('click',()=>{
+  const s=document.getElementById('calendarSection');
+  s.classList.remove('hidden');
+  setTimeout(()=>s.scrollIntoView({behavior:'smooth',block:'start'}),50);
+  confetti();
+});
+
+window.addEventListener('scroll',()=>{
+  document.querySelectorAll('.photo').forEach((p,i)=>{
+    if(p.getBoundingClientRect().top < innerHeight*.88) setTimeout(()=>p.classList.add('visible'),i*90);
+  });
+});
+</script>
+</body>
+</html>
